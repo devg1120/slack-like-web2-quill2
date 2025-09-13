@@ -189,19 +189,22 @@ function insert_emoji(emoji) {
 
 function set_editMode() {
   //console.log("set_editMode call...OK");
+
   let quillEditor = qeditor.value.getEditor();
+  console.log("quillEditor", quillEditor);
+
   let quill = qeditor.value.getQuill()
   //console.log("quillEditor", quillEditor.classList);
 
-  if (quillEditor.classList.contains('ql-disabled') ) {
+  if (quillEditor.value.classList.contains('ql-disabled') ) {
        quill.enable(true);
        console.log( "edit mode");
-       quillEditor.classList.add('editting');
+       quillEditor.value.classList.add('editting');
        return false;
   } else {
        quill.enable(false);
        console.log( "not edit mode");
-       quillEditor.classList.remove('editting');
+       quillEditor.value.classList.remove('editting');
        return true;
 
   }

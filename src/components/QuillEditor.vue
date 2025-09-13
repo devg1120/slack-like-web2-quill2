@@ -15,9 +15,11 @@ const props = defineProps({
     },
 });
 
+
 defineExpose({
     setHTML,
     getQuill,
+    getEditor,
 });
 
 const emits = defineEmits(["update:modelValue"]);
@@ -26,7 +28,9 @@ let quillInstance = null;
 
 function getQuill() {
    return quillInstance;
-
+}
+function getEditor() {
+   return editor;
 }
 const toolbar = computed(() => {
     // ここは好きな用にツールバーをカスタマイズしてね♥

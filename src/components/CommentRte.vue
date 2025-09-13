@@ -243,7 +243,7 @@ defineExpose({
   <QuillEditor 
 	ref="qeditor"
 	:options="options"
-	v-model:content="model"
+        v-model:modelValue="model"
 	contentType="html"
 	/>
 <!--
