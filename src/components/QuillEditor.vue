@@ -7,13 +7,27 @@ import "quill/dist/quill.bubble.css";
 
 const props = defineProps({
     modelValue: String,
-    disabled: Boolean,
+    //disabled: Boolean,
+    readOnly: Boolean,
+    theme: {
+       type: String,
+       default: 'snow',
+    },
+});
+
+defineExpose({
+    setHTML,
+    getQuill,
 });
 
 const emits = defineEmits(["update:modelValue"]);
 let editor = ref(null);
 let quillInstance = null;
 
+function getQuill() {
+   return quillInstance;
+
+}
 const toolbar = computed(() => {
     // ここは好きな用にツールバーをカスタマイズしてね♥
     return [
@@ -24,6 +38,9 @@ const toolbar = computed(() => {
         [{ size: ["small", false, "large", "huge"] }, "clean"],
     ];
 });
+
+function setHTML(value) {
+}
 
 const content = computed({
     get: () => {
@@ -36,11 +53,12 @@ const content = computed({
 
 onMounted(() => {
     quillInstance = new Quill(editor.value, {
-        theme: "snow",
+        //theme: "snow",
+        theme: props.theme,
         modules: {
             toolbar: toolbar.value,
         },
-        readOnly: props.disabled,
+        readOnly: props.readOnly,
     });
     quillInstance.root.innerHTML = content.value;
     quillInstance.on("text-change", () => {
