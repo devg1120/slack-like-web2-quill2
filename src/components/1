@@ -1,0 +1,36 @@
+<script setup lang="ts">
+
+
+import EmojiPicker from 'vue3-emoji-picker'
+import 'vue3-emoji-picker/css'
+
+const selectEmoji = (emoji) => {
+  console.log("Emoji", emoji.i);
+  // emit
+}
+
+</script>
+
+<template>
+
+<EmojiPicker 
+  v-if="showEmojiPicker" 
+  @select="selectEmoji" 
+  :native="true" 
+  :display-recent="true" 
+  :additional-groups="{
+    my_custom_group: [
+      { n: ['ok'], u: '1f197' },
+      { n: ['NG'], u: '1f196' },
+      { n: ['ok'], u: '1f44C' },
+      { n: ['good'], u: '1f44D' },
+      { n: ['check'], u: '2705' },
+      { n: ['cross'], u: '274E' },
+      { n: ['maru'],  u: '2B55' },
+      { n: ['batu'],  u: '274C' },
+    ],
+  }"
+  :group-names="{ my_custom_group: 'Frequently used' }"
+/>
+
+</template>
