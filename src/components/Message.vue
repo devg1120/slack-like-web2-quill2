@@ -946,7 +946,8 @@ MutationObserver
 }
 
 .message-content {
-  margin-left: 44px;
+  /*margin-left: 44px;*/
+  margin-left: 0px;
   line-height: 1.4;
 }
 
