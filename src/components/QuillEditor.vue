@@ -26,6 +26,8 @@ const emits = defineEmits(["update:modelValue"]);
 let editor = ref(null);
 let quillInstance = null;
 
+
+
 function getQuill() {
    return quillInstance;
 }
@@ -96,6 +98,31 @@ watch(
 }
 .ql-editor .ql-size-huge {
     font-size: 2.1em;
+}
+
+          /* none   block */
+	  /*
+.ql-toolbar.ql-snow {
+  display:block;          
+
+}
+*/
+          /* none  1px solid #ccc*/
+	  /*
+.ql-container.ql-snow {
+    border: 1px solid #ccc;         
+}
+  display:v-bind(toolbar_style);
+  display:v-bind(toolbar_enable.value);
+*/
+
+
+.ql-toolbar-hidden.ql-toolbar.ql-snow {
+  display:none;
+}
+
+.ql-disabled.ql-container.ql-snow {
+    border: none;         
 }
 </style>
 

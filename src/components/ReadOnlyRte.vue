@@ -191,7 +191,7 @@ function set_editMode() {
   //console.log("set_editMode call...OK");
 
   let quillEditor = qeditor.value.getEditor();
-  console.log("quillEditor", quillEditor);
+  console.log("------------quillEditor", quillEditor);
 
   let quill = qeditor.value.getQuill()
   //console.log("quillEditor", quillEditor.classList);
@@ -200,11 +200,21 @@ function set_editMode() {
        quill.enable(true);
        console.log( "edit mode");
        quillEditor.value.classList.add('editting');
+       //const toolbar = document.getElementById(toolbar_id);
+       //const toolbar = quillEditor.value.parent.querySelectorAll(".ql-toolbar")[0];
+       const toolbar = quillEditor.value.parentElement.getElementsByClassName("ql-toolbar")[0];
+       console.log(toolbar);
+       toolbar.classList.remove("ql-toolbar-hidden");
        return false;
   } else {
        quill.enable(false);
        console.log( "not edit mode");
        quillEditor.value.classList.remove('editting');
+       //const toolbar = document.getElementById(toolbar_id);
+       //const toolbar = quillEditor.value.parent.querySelectorAll(".ql-toolbar")[0];
+       const toolbar = quillEditor.value.parentElement.getElementsByClassName("ql-toolbar")[0];
+       console.log(toolbar);
+       toolbar.classList.add("ql-toolbar-hidden");
        return true;
 
   }
@@ -222,6 +232,13 @@ defineExpose({
     insert_emoji,
     set_editMode,
 });
+
+onMounted(() => {
+  let quillEditor = qeditor.value.getEditor();
+       const toolbar = quillEditor.value.parentElement.getElementsByClassName("ql-toolbar")[0];
+       toolbar.classList.add("ql-toolbar-hidden");
+
+});
 </script>
 
 <template>
@@ -237,6 +254,7 @@ defineExpose({
 	v-model:content="model"
 	contentType="html"
 	theme="snow"
+	theme="bubble"
 	/>
 	readOnly=false
 	-->
@@ -246,7 +264,7 @@ defineExpose({
 	:options="options"
 	v-model:modelValue="model"
 	contentType="html"
-	theme="bubble"
+	theme="snow"
 	:readOnly="true"
 	/>
 
