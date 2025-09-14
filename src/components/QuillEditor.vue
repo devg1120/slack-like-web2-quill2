@@ -124,6 +124,11 @@ watch(
 .ql-disabled.ql-container.ql-snow {
     border: none;         
 }
+
+.ql-container {
+ min-height: 3rem !important;
+}
+
 </style>
 
 

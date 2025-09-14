@@ -312,5 +312,21 @@ defineExpose({
  line-height: 1.2;
 
 }
+/*
+.message-content {
+ min-height: 3rem !important;
+}
+.comment-content {
+ min-height: 3rem !important;
+}
+.ql-container {
+ min-height: 3rem !important;
+}
+
+element.style {
+    min-height: 3rem;
+}
+*/
+
 </style>
 
