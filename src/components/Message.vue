@@ -680,8 +680,9 @@ function getLeft(d) {
 	    <EditRte       class="message-content"   ref="rte" v-model="message.content"  />  
 	    <ReadOnlyRte       class="message-content"   ref="rte" v-model="message.content"  />  
 	    -->
+	    <div class="editor">
 	    <ReadOnlyRte       class="message-content"   ref="rte" v-model="message.content"  />  
-	    
+	    </div>
 
             <div v-if="message.attachments?.length" class="message-attachments">
               <div
@@ -932,6 +933,11 @@ MutationObserver
 .timestamp {
   color: #666;
   font-size: 16px;
+}
+
+
+.editor {
+  width:96%;
 }
 
 .message-content {
@@ -1221,6 +1227,7 @@ align-items: center;
 .comment-input {
   margin-left: 44px;
   margin-top: 8px;
+  width: 90%;
 }
 
 .comment-input textarea {

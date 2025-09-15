@@ -533,8 +533,9 @@ const comment_delete = () => {
 <!--
                   <div v-html="formatMessage(comment.content)"></div>
 -->
+                  <div class="editor">
 		  <ReadOnlyRte       class="comment-content"   ref="rte" v-model="comment.content" />
-
+                  </div>
 
                 </div>
 
@@ -551,6 +552,10 @@ const comment_delete = () => {
   min-width: 0; /* Add this to prevent overflow */
   /* background: #fafafa; */
 }
+
+.editor {
+  width : 90%;
+  }
 
 .messages-container {
   flex: 1;
