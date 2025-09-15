@@ -711,22 +711,11 @@ function getLeft(d) {
             </div>
 
             <div class="message-actions">
-		    <!--
-            <button class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">😊</button>
-		    -->
+	    <!--
             <button ref="reaction_emoji_button_el" class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
-              <div class="reactions" v-if="message.reactions?.length">
-		      <!--
-                <div
-                  v-for="reaction in message.reactions"
-                  :key="reaction.emoji"
-                  class="reaction-badge"
-                  @click="countUpReaction(message.id, reaction.emoji, reaction)"
-                  :class="{ active: reaction.users.includes('You') }"
-                >
-                  {{ reaction.emoji }} {{ reaction.count }}
-                </div>
-		      -->
+	    -->
+            <button ref="reaction_emoji_button_el" class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
+            <div class="reactions" v-if="message.reactions?.length">
                 <div
                   v-for="reaction in message.reactions"
                   :key="reaction.emoji"
@@ -1153,6 +1142,16 @@ textarea:focus {
 align-items: center;
 }
 
+.reaction-emoji-button {
+  background: none;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  margin-left: 4px; 
+  padding: 4px 4px;
+  font-size: 18px;
+}
 .add-comment {
   /* background: none;*/
   background:#0080ff ;
