@@ -714,7 +714,7 @@ function getLeft(d) {
 	    <!--
             <button ref="reaction_emoji_button_el" class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
 	    -->
-            <button ref="reaction_emoji_button_el" class="reaction-emoji-button" @click="showEmojiPicker = !showEmojiPicker">✅</button>
+            <button ref="reaction_emoji_button_el" class="reaction-emoji-button2" @click="showEmojiPicker = !showEmojiPicker">React</button>
             <div class="reactions" v-if="message.reactions?.length">
                 <div
                   v-for="reaction in message.reactions"
@@ -817,7 +817,7 @@ MutationObserver
                     placeholder="addComment(message.id)"
                />
 
-              <button class="send-comment" @click="addComment(message.id)">Comment Send</button>
+              <button class="send-comment" @click="addComment(message.id)">Post</button>
             </div>
 
 <!--
@@ -1043,7 +1043,7 @@ textarea:focus {
   display: flex;
   align-items: center;
 }
-
+/*
 .reaction-emoji-button {
   background: none;
   border: none;
@@ -1053,6 +1053,7 @@ textarea:focus {
   display: flex;
   align-items: center;
 }
+*/
 .attachment-button {
   cursor: pointer;
   display: flex;
@@ -1150,7 +1151,18 @@ align-items: center;
   cursor: pointer;
   margin-left: 4px; 
   padding: 4px 4px;
-  font-size: 18px;
+  font-size: 16px;
+}
+.reaction-emoji-button2 {
+  background: blue;
+  border: none;
+  /*color: #666;*/
+  color: white;
+  cursor: pointer;
+  margin-left: 9px; 
+  margin-left: 0px; 
+  padding: 4px 4px;
+  font-size: 12px;
 }
 .add-comment {
   /* background: none;*/
@@ -1161,7 +1173,7 @@ align-items: center;
   color: white;
   cursor: pointer;
    margin-left: 44px;
-  /* margin-left: 4px; */
+   margin-left: 35px;
   padding: 4px 4px;
   font-size: 12px;
 }
@@ -1229,8 +1241,9 @@ align-items: center;
 .reactions {
   display: flex;
   gap: 4px;
-  margin-top: 4px;
-  margin-left: 44px;
+  margin-top: 1px;
+  margin-left: 22px;
+  padding-bottom: 12px;
 }
 
 .reaction-badge {
@@ -1299,7 +1312,9 @@ align-items: center;
 
 .reaction-badge {
   background: #f0f0f0;
-  padding: 2px 6px;
+  padding: 2px 8px;
+  margin-right: 1px;
+  margin-bottom: 1px;
   border-radius: 12px;
   font-size: 12px;
   cursor: pointer;

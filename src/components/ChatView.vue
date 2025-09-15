@@ -681,7 +681,7 @@ onMounted(() => {
           <PaperClipIcon class="icon" />
           <input type="file" multiple @change="handleFileUpload" style="display: none" />
         </label>
-        <button class="send-button" @click="sendMessage">Send</button>
+        <button class="send-button" @click="sendMessage">Post</button>
       </div>
     </div>
     <AttachmentViewer v-if="selectedAttachment" :attachment="selectedAttachment" @close="selectedAttachment = null" />
@@ -818,7 +818,8 @@ onMounted(() => {
 
 .editor-container {
   position: relative;
-  max-width: 100%;
+  max-width: 98%;
+  left: 8px;
   display: flex;
   flex-direction: column;
 }
