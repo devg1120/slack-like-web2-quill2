@@ -188,9 +188,18 @@ function insert_emoji(emoji) {
   } else {
       quill.insertText(0,emoji);
   }
-
-
 }
+
+function insert_date(str_date) {
+  let quill = qeditor.value.getQuill()
+  let selection = quill.getSelection( );
+  if (selection != null) {
+      quill.insertText(selection.index,str_date);
+  } else {
+      quill.insertText(0,str_date);
+  }
+}
+
 /*
     const call = () => {
       console.log("conponent call...OK");
@@ -201,6 +210,7 @@ defineExpose({
     call,
     content_reset,
     insert_emoji,
+    insert_date,
 });
 </script>
 

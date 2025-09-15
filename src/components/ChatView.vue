@@ -15,6 +15,8 @@ import  MessagePart  from "./Message.vue"
 import EmojiPicker from 'vue3-emoji-picker'
 import EmojiSelect from './EmojiSelect.vue'
 import 'vue3-emoji-picker/css'
+import DatePickerBase from './DatePicker.vue'
+
 
 
 const messages = ref<Message[]>([
@@ -312,8 +314,30 @@ const addReaction = (messageId: string, emoji: string) => {
   }
 }
 
+const dayNames = [
+"日", 
+"月", 
+"火", 
+"水", 
+"木", 
+"金", 
+"土", 
+];
+
+
+const insertDate = (date) => {
+  console.log("insert Date", date);
+  var year = date.getFullYear();
+  var month = ("0" + String(date.getMonth() + 1)).slice(-2);
+  var day = ("0" + String(date.getDate())).slice(-2);
+  const week_index = date.getDay();
+  const week = dayNames[week_index];
+  let format_date = year + "-" + month + "-" + day + " (" + week +")";
+  console.log(format_date);
+  rte.value.insert_date(format_date);
+}
 const insertEmoji2 = (emoji) => {
-  console.log("ChatView Emoji", emoji);
+  console.log("insert Emoji2", emoji);
   rte.value.insert_emoji(emoji.i);
   showEmojiPicker.value = false
 }
@@ -677,6 +701,7 @@ onMounted(() => {
 
       <div class="editor-actions">
         <button class="emoji-button" @click="showEmojiPicker = !showEmojiPicker">😊</button>
+        <DatePickerBase @insertDate="insertDate" />
         <label class="attachment-button">
           <PaperClipIcon class="icon" />
           <input type="file" multiple @change="handleFileUpload" style="display: none" />

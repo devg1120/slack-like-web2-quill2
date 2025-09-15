@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import DatePickerBase from './components/DatePicker.vue'
+import DatePickerBase2 from './components/DatePicker2.vue'
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import DatePickerBase from './components/DatePicker.vue'
   </div>
   <HelloWorld msg="Vite + Vue" />
   <DatePickerBase />
+  <DatePickerBase2 />
 </template>
 
 <style scoped>
