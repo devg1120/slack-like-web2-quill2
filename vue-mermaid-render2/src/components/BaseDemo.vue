@@ -1,6 +1,6 @@
 <style lang="css" scoped>
-  .container {
-    height: 300px;
+.container {
+    height: calc(100vh - 16px);
     white-space: pre-wrap;
   }
 </style>
