@@ -1295,7 +1295,7 @@ marked@^15.0.7:
   resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.12.tgz#30722c7346e12d0a2d0207ab9b0c4f0102d86c4e"
   integrity sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==
 
-mermaid@^11.4.0:
+mermaid@^11.11.0:
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-11.11.0.tgz#860830d711663a385c8ddf9abf15beef15fcc675"
   integrity sha512-9lb/VNkZqWTRjVgCV+l1N+t4kyi94y+l5xrmBmbbxZYkfRl5hEDaTPMOcaWKCl1McG8nBEaMlWwkcAEEgjhBgg==
@@ -1602,13 +1602,6 @@ vue-demi@>=0.14.8:
   version "0.14.10"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.10.tgz#afc78de3d6f9e11bf78c55e8510ee12814522f04"
   integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==
-
-vue-mermaid-render@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/vue-mermaid-render/-/vue-mermaid-render-0.2.0.tgz#351e948848ea89a686441245a712ee69c73571a9"
-  integrity sha512-y/3Qxw0qxUoTzBuBCHChFDcT55ibIkhXYS/ftWuT25v6koV4mq1wV5yHVVzeCgiZy+qnGXdjOJTon3WI7kXcrw==
-  dependencies:
-    mermaid "^11.4.0"
 
 vue-tsc@^3.0.5:
   version "3.0.7"

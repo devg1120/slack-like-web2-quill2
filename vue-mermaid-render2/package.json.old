@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@rmp135/vue-splitter": "^2.0.2",
-    "mermaid": "^11.11.0",
     "monaco-editor": "^0.53.0",
     "monaco-editor-vue3": "^1.0.3",
     "splitpanes": "^4.0.4",
     "super-vue3-tabs": "^1.2.5",
-    "vue": "^3.5.18"
+    "vue": "^3.5.18",
+    "vue-mermaid-render": "^0.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
