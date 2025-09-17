@@ -1,0 +1,116 @@
+
+<!--
+
+<template>
+  <BaseTree class="mtl-tree" v-model="treeData" treeLine>
+    <template #default="{ node, stat }">
+    <div    @click="select" style="width:100%">
+      <OpenIcon
+        v-if="stat.children.length"
+        :open="stat.open"
+        class="mtl-mr"
+        @click.native="stat.open = !stat.open"
+      />
+      <span class="mtl-ml"
+	      >{{ node.text }}</span>
+    </div>
+    </template>
+  </BaseTree>
+</template>
+-->
+
+<template>
+  <div class="tree-menu">
+    <div @click="toggleChildren">{{ label }}</div>
+    <tree-menu
+      v-show="showChildren"
+      v-for="(node, index) in nodes"
+      :nodes="node.nodes"
+      :label="node.label"
+      :depth="depth + 1"
+      :key="index"
+
+    >
+    </tree-menu>
+  </div>
+</template>
+<script>
+export default {
+  props: ["label", "nodes", "depth"],
+  data() {
+    return { showChildren: false };
+  },
+  name: "tree-menu",
+  methods: {
+    toggleChildren() {
+      this.showChildren = !this.showChildren;
+    },
+  },
+};
+
+/*
+  import  BaseTree   from './BaseTree.vue'
+  import  OpenIcon   from './OpenIcon.vue'
+  import '@he-tree/vue/style/default.css'
+  import '@he-tree/vue/style/material-design.css'
+
+  let select_element = null;
+
+  function select(e) {
+     console.log("selet", e.target);
+
+     if (select_element != null ) {
+         select_element.classList.remove("select");
+     }
+     e.target.classList.add("select");
+     select_element = e.target;
+
+  }
+   const treeData= [
+          {
+            text: 'Projects',
+            children: [
+              {
+                text: 'Frontend',
+                children: [
+                  {
+                    text: 'Vue',
+                    children: [
+                      {
+                        text: 'Nuxt',
+                      },
+                    ],
+                  },
+                  {
+                    text: 'React',
+                    children: [
+                      {
+                        text: 'Next',
+                      },
+                    ],
+                  },
+                  {
+                    text: 'Angular',
+                  },
+                ],
+              },
+              {
+                text: 'Backend',
+              },
+            ],
+          },
+          { text: 'Photos' },
+          { text: 'Videos' },
+        ];
+*/
+
+  
+</script>
+<style scoped>
+.select {
+   background-color: #cce5ff;
+}
+.tree-menu {
+ margin-left: calc(10px * v-bind(depth));
+}
+</style>

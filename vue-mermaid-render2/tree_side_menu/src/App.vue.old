@@ -1,0 +1,97 @@
+
+<script setup>
+  import { ref, defineProps, defineModel, watch, watchEffect } from 'vue';
+  import TreeMenu from "./components/TreeMenu.vue"; 
+
+
+ let tree= [
+        {
+          label: "root",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+            },
+          ],
+        },
+        {
+          label: "root2",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+            },
+          ],
+        }
+      ];
+
+let select_element = null;
+
+const selectElement = (ele) => {
+     console.log("Select:",ele);
+     if (select_element != null) {
+           select_element.classList.remove("select");
+     }
+
+     select_element = ele;
+
+};
+
+
+</script>
+
+
+<template>
+     <div class="base">
+        <TreeMenu
+          v-for="(list, index) in tree"
+          :label="list.label"
+          :nodes="list.nodes"
+          :depth="0"
+          :key="index"
+	  @selectElement="selectElement"
+        ></TreeMenu>
+     </div>
+
+</template>
+<style scoped>
+
+.base {
+  width: 300px;
+  height:90vh;
+  padding: 8px;
+  background-color: #e0e0e0;
+  background-color: #f5f5f5;
+}
+
+</style>
