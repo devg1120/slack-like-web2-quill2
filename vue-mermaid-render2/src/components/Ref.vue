@@ -69,6 +69,114 @@
 		 docid:    "00006",
             },
           ],
+        },
+        {
+          label: "root3",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+		  docid:    "00004",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+		       docid:    "00005",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+		 docid:    "00006",
+            },
+          ],
+        },
+        {
+          label: "root4",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+		  docid:    "00004",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+		       docid:    "00005",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+		 docid:    "00006",
+            },
+          ],
+        },
+        {
+          label: "root5",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+		  docid:    "00004",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+		       docid:    "00005",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+		 docid:    "00006",
+            },
+          ],
+        },
+        {
+          label: "root6",
+          nodes: [
+            {
+              label: "item1",
+              nodes: [
+                {
+                  label: "item1.1",
+		  docid:    "00004",
+                },
+                {
+                  label: "item1.2",
+                  nodes: [
+                    {
+                      label: "item1.2.1",
+		       docid:    "00005",
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              label: "item2",
+		 docid:    "00006",
+            },
+          ],
         }
       ];
 
@@ -116,14 +224,16 @@ let content = ref("CONTENT A");
 
 .main {
  display:flex;
+ height:100%;
 
 }
 .sidemenu {
   width: 300px;
-  height:90vh;
+  height:100%;
   padding: 8px;
   background-color: #e0e0e0;
   background-color: #f5f5f5;
+  overflow: auto;
 }
 
 .content {
