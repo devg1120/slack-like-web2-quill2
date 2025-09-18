@@ -9,6 +9,17 @@
   import{ menu_tree }  from "./reference/menu.ts"; 
 
 /*
+https://www.npmjs.com/package/@mermaid-js/layout-elk
+
+elk: The default layout, which is elk.layered.
+elk.layered: Layered layout
+elk.stress: Stress layout
+elk.force: Force layout
+elk.mrtree: Multi-root tree layout
+elk.sporeOverlap: Spore overlap layout
+*/
+
+/*
  let content_dic = {
 
    _00001: "AAAAA",
@@ -240,7 +251,10 @@ const config = ref(
   startOnLoad: true,
   //layout: "tidy-tree",
   //layout: "elk.layered",
+  //  layout: elk.stress
+
   //layout: "elk.mrtree",
+  layout: "elk",
   //flowchart: { useMaxWidth: false, htmlLabels: true }
   //flowchart: { curve: "linear" }
  }

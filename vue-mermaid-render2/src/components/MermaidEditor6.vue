@@ -44,11 +44,25 @@ const config = computed(() => {
 
 
 //%%{init:{'theme':'forest'}}%%
-const code = ref(`
+const code_ = ref(`
 sequenceDiagram
         Site->>mermaid: initialize
         Site->>mermaid: content loaded
         mermaid->>mermaidAPI: init
+`)
+
+
+const code = ref(`
+%%{
+ init: { 'layout':'elk',
+          'theme': 'forest' 
+       } 
+}%%
+
+flowchart TB
+  A[Start] --> B{Decision}
+  B -->|Yes| C[Continue]
+  B -->|No| D[Stop]
 `)
 
 const editorOptions = {
