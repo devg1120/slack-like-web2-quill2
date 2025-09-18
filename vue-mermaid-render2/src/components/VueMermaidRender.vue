@@ -2,6 +2,11 @@
 import { ref, watchEffect } from 'vue'
 import mermaid from 'mermaid'
 import type { MermaidConfig } from 'mermaid'
+import tidyTreeLayouts from '@mermaid-js/layout-tidy-tree';
+import elkLayouts from '@mermaid-js/layout-elk';
+
+mermaid.registerLayoutLoaders(tidyTreeLayouts);
+mermaid.registerLayoutLoaders(elkLayouts);
 
 /**
  * props
@@ -37,12 +42,14 @@ async function updateGraph(graphDefinition: string) {
 }
 
 // init mermaid
+
 watchEffect(() => {
   if (!el.value)
     return
 
   if (props.config)
-    mermaid.initialize({ startOnLoad: false, ...props.config })
+    mermaid.initialize({ startOnLoad: false,
+                             ...props.config })
   else
     mermaid.initialize({ startOnLoad: false })
 

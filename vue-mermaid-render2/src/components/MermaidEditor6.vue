@@ -20,7 +20,7 @@ const lorumipsum = GenLorum()
 
 const config_json = ref(`
 { 
-  "theme" : "dark",
+  "theme" : "forest",
   "startOnLoad" : true, 
   "flowchart" : { "useMaxWidth" : false, "htmlLabels" : true }
 }
@@ -67,7 +67,9 @@ const editorOptions = {
   <base-demo  
   >
     <template #left-pane>
+    
        <VueMermaidRender :config="config" :content="code" />
+	   
     </template>
     <template #right-pane>
       <vue-splitter

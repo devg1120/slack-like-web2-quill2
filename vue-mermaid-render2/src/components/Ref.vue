@@ -3,7 +3,12 @@
   import { ref, defineProps, defineModel, watch, watchEffect } from 'vue';
   import TreeMenu from "./tree_menu/TreeMenu.vue"; 
   import Content from "./tree_menu/Content.vue"; 
+  //import  MermaidContent from "./tree_menu/MermaidContent.vue"; 
+  import  VueMermaidRender  from './VueMermaidRender.vue';
+  import{ content_dic }  from "./reference/content.ts"; 
+  import{ menu_tree }  from "./reference/menu.ts"; 
 
+/*
  let content_dic = {
 
    _00001: "AAAAA",
@@ -14,8 +19,9 @@
    _00006: "FFFFF",
 
  };
-
- let tree= [
+*/
+/*
+ let menu_tree= [
         {
           label: "root",
           nodes: [
@@ -179,6 +185,7 @@
           ],
         }
       ];
+*/
 
 let select_element = null;
 
@@ -187,7 +194,12 @@ const selectElement = (ele) => {
      console.log("Select:",ele.getAttribute("docid"));
      let docid = ele.getAttribute("docid");
      //content.value = "<<<" + docid + ">>>";
-     content.value = "<<<" + content_dic['_' + docid] + ">>>";
+     //content.value = "<<<" + content_dic['_' + docid] + ">>>";
+     content.value =  content_dic['_' + docid].code ;
+     title.value =  content_dic['_' + docid].title ;
+     set_content.value = true;
+
+     console.log(content.value);
 
      if (select_element != null) {
            select_element.classList.remove("select");
@@ -197,7 +209,49 @@ const selectElement = (ele) => {
 
 };
 
-let content = ref("CONTENT A");
+
+let content = ref(`
+flowchart LR
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+
+`);
+
+/*
+basis
+bumpX
+bumpY
+cardinal
+catmullRom
+linear
+monotoneX
+monotoneY
+natural
+step
+stepAfter
+StepBefore
+*/
+const config = ref(
+{
+  //theme : "dark",
+  theme : "forest",
+  startOnLoad: true,
+  //layout: "tidy-tree",
+  //layout: "elk.layered",
+  //layout: "elk.mrtree",
+  //flowchart: { useMaxWidth: false, htmlLabels: true }
+  //flowchart: { curve: "linear" }
+ }
+);
+
+
+//const content = ref("");
+//let config = null;
+
+let set_content = ref(false);
+let title = ref("TEST TITLE");
 
 </script>
 
@@ -206,7 +260,7 @@ let content = ref("CONTENT A");
   <div class="main">
      <div class="sidemenu">
         <TreeMenu
-          v-for="(list, index) in tree"
+          v-for="(list, index) in menu_tree"
           :label="list.label"
           :docid="list.docid"
           :nodes="list.nodes"
@@ -216,12 +270,25 @@ let content = ref("CONTENT A");
         ></TreeMenu>
      </div>
      <div class="content">
+	     <!--
             <Content v-model="content"/>
+            <MermaidContent v-model="content"/>
+	    <VueMermaidRender :config="config" :content="content" />
+	     -->
+	    <div v-if="set_content">
+            <strong class="title" >{{title}}</strong>
+            <Content v-model="content"/>
+	    <VueMermaidRender :config="config"  :content="content" />
+	    </div>
      </div>
   </div>
 </template>
 <style scoped>
 
+.title {
+   font-size: 20px;
+
+}
 .main {
  display:flex;
  height:100%;
@@ -240,6 +307,8 @@ let content = ref("CONTENT A");
   padding: 8px;
   width:100%;
   background-color: #e0e0e0;
+  background-color:#f8f8ff;
+  overflow: auto;
 }
 
 </style>
