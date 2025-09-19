@@ -8,7 +8,7 @@
   import{ content_dic }  from "./reference/content.ts"; 
   import{ menu_tree }  from "./reference/menu.ts"; 
   import { CodeEditor } from 'monaco-editor-vue3';
-  import VueSplitter from '@rmp135/vue-splitter'
+
 
 const editorOptions = {
   fontSize: 14,
@@ -271,8 +271,7 @@ const config = ref(
   //  layout: elk.stress
 
   //layout: "elk.mrtree",
-  //layout: "elk",
-  layout: "dagre",
+  layout: "elk",
   //flowchart: { useMaxWidth: false, htmlLabels: true }
   //flowchart: { curve: "linear" }
  }
@@ -305,11 +304,7 @@ let title = ref("TEST TITLE");
 	    <div v-if="set_content">
                  <strong class="title" >{{title}}</strong>
 	         <div class="panel">
-<vue-splitter>
-  <template #left-pane>
 	             <VueMermaidRender :config="config"  :content="content" class="mermaid"/>
-  </template>
-  <template #right-pane>
 	             <div class="editor">
                      <CodeEditor
                                   v-model:value="content"
@@ -318,9 +313,6 @@ let title = ref("TEST TITLE");
                                   :options="editorOptions"
                       />
 	             </div>
-  </template>
-</vue-splitter>
-
 	         </div>
 	    </div>
      </div>
@@ -338,12 +330,13 @@ let title = ref("TEST TITLE");
    display:flex;
 }
 .editor {
-   /*width:50vw;*/
+   /*width:60%;*/
+   width:50vw;
    height:90vh;
 }
 
 .mermaid {
-   /*width:50vw;*/
+   width:50vw;
    height:60vh;
    overflow-y: auto;
 }

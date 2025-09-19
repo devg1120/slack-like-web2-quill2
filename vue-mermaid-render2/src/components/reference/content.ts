@@ -37,7 +37,7 @@ _00004: {
 
  title: "COMPLEX",
  code:`
- %%{init: { 'theme': 'dark' } }%%
+ %%{init: { 'theme': 'dark' , 'layout': 'elk'} }%%
  flowchart LR
     A[Hard edge] -->|Link text| B(Round edge)
     B --> C{Decision}
@@ -179,9 +179,12 @@ _00010: {
 
 title: "ORGNAZATION 2",
 code:`
-%%{ init: { 'flowchart': { 'curve': 'stepAfter',
+%%{ init: { 
+     'layout': 'dagre',
+     'flowchart': { 'curve': 'stepAfter',
 	                   'rankSpacing':120
-} } }%%
+} } 
+}%%
 flowchart TD
     A[Christmas] --- B[Go shopping]
     B ---  X[Let me think]
@@ -241,8 +244,22 @@ flowchart TD
 
 _00011: {
 
- title: "ORGNAZATION",
+ title: "ORGNAZATION 3",
  code:`
+%%{
+  init: {
+    "theme": "dark",
+    "fontFamily": "monospace",
+    "logLevel": "info",
+    "flowchart": {
+      "htmlLabels": true,
+      "curve": "linear"
+    },
+    "sequence": {
+      "mirrorActors": true
+    }
+  }
+}%%
 stateDiagram-v2
     state "CEO" as ceo
     state "T. H. Eboss" as ceo
@@ -273,6 +290,47 @@ stateDiagram-v2
     state "Lawyer" as law
     state "John" as law
 
+ `
+ },
+
+_00012: {
+
+ title: "BIG EXSAMPLE",
+ code:`
+%%{ init: { 
+     'layout': 'dagre'
+ } 
+}%%
+graph TD;
+classDef sut stroke:#0A0;
+subgraph ext["Public facing"]
+direction LR
+ex_api["External api"]
+end
+subgraph peers[" "]
+direction LR
+subgraph Our Domain
+direction LR
+a["Foo"]:::sut --> db_a[("state")]:::sut
+b["Bar"] --> db_b[("state")]
+ex_api --> a
+a -->|local| b
+end 
+style peers fill:#0000, stroke:#0000
+subgraph Peer Domain
+direction LR
+peer_a["Baz"] --> peer_a_db[("state")]
+a -->|peer| peer_a
+end
+end
+subgraph legacy["legacy systems"]
+direction LR
+leg_d["Qux"] --> leg_d_db[("state")]
+a -->|legacy| leg_d
+end
+deps@{ shape: st-rect, label: "other services" }
+b --> deps
+peer_a --> deps
  `
  },
 

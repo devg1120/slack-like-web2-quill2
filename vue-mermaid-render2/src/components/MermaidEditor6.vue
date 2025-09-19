@@ -63,6 +63,9 @@ flowchart TB
   A[Start] --> B{Decision}
   B -->|Yes| C[Continue]
   B -->|No| D[Stop]
+
+
+
 `)
 
 const editorOptions = {
@@ -78,7 +81,7 @@ const editorOptions = {
 <template>
 
 
-  <base-demo  
+  <base-demo  initial-Percent=40
   >
     <template #left-pane>
     

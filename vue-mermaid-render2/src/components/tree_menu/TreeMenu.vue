@@ -20,7 +20,7 @@
 -->
 
 <template>
-  <div class="tree-menu" :docid="props.docid">
+  <div class="tree-menu" :docid="props.docid" :label="props.label">
    <div class="item" @click="toggleChildren" >
      <div v-if="props.nodes">
         <div v-if="showChildren">
