@@ -1,7 +1,0 @@
-{
-  "integrationFolder": "e2e/specs",
-  "fixturesFolder": false,
-  "pluginsFile": false,
-  "supportFile": false,
-  "video": false
-}
