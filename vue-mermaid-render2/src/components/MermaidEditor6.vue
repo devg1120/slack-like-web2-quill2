@@ -16,6 +16,20 @@ import BaseDemo from './BaseDemo.vue'
 import { GenLorum } from './Helpers'
 import  Ref  from './Ref.vue'
 
+//import initEditor from 'monaco-mermaid';
+//initEditor(monacoEditor); 
+
+import { onErrorCaptured } from "vue";
+
+onErrorCaptured((error, insttance, info) => {
+  // error: エラーのインスタンス
+  // instance: ソースコンポーネント
+  // info: なんかの情報
+
+  // errorの情報をもとにハンドリング
+  console.log("エラーが発生しました。")
+});
+
 const lorumipsum = GenLorum()
 
 const config_json = ref(`
@@ -52,7 +66,7 @@ sequenceDiagram
 `)
 
 
-const code = ref(`
+const code2 = ref(`
 %%{
  init: { 'layout':'elk',
           'theme': 'forest' 
@@ -68,12 +82,34 @@ flowchart TB
 
 `)
 
+const code = ref(`---
+title: Hello Title
+config:
+  theme: forest
+---
+flowchart
+	Hello --> World
+`)
+
 const editorOptions = {
   fontSize: 14,
   minimap: { enabled: false },
   automaticLayout: true
 };
 
+
+function handleError(error) {
+ console.log("Error:", error);
+}
+function handleLoading() {
+ console.log("Loading:" );
+}
+function handleReady() {
+ console.log("Redy:" );
+}
+function err_mermaid(msg) {
+ console.log("Err Mermaid:", msg );
+}
 </script>
 
 
@@ -85,7 +121,7 @@ const editorOptions = {
   >
     <template #left-pane>
     
-       <VueMermaidRender :config="config" :content="code" />
+       <VueMermaidRender :config="config" :content="code" @err-mermaid="err_mermaid"/>
 	   
     </template>
     <template #right-pane>
@@ -98,10 +134,17 @@ const editorOptions = {
               <Tab value="code"  class="code " style="height:100vh;" >
                        <CodeEditor
                          v-model:value="code"
-                         language="javascript"
+                         language="mermaid"
                          theme="vs-white"
                          :options="editorOptions"
-                       />
+                         @error="handleError"
+			 @ready="handleReady"
+                         @loading="handleLoading"
+
+                       >
+
+                       </CodeEditor>
+
               </Tab>
               <Tab value="config" class="config"  style="height:100vh;" >
                        <CodeEditor

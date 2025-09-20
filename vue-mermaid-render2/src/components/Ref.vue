@@ -311,12 +311,16 @@ let title = ref("TEST TITLE");
   </template>
   <template #right-pane>
 	             <div class="editor">
+		     <!--
                      <CodeEditor
                                   v-model:value="content"
-                                  language="javascript"
+                                  language="mermaid"
                                   theme="vs-dark"
                                   :options="editorOptions"
                       />
+		      -->
+		           <p class="plain" >{{content}}</p>
+
 	             </div>
   </template>
 </vue-splitter>
@@ -341,7 +345,13 @@ let title = ref("TEST TITLE");
    /*width:50vw;*/
    height:90vh;
 }
+.plain {
+ width:100%;
+ height:100%;
+ font-family: monospace;
 
+
+}
 .mermaid {
    /*width:50vw;*/
    height:60vh;

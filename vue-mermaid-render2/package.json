@@ -12,9 +12,10 @@
     "@mermaid-js/layout-elk": "^0.2.0",
     "@mermaid-js/layout-tidy-tree": "^0.2.0",
     "@rmp135/vue-splitter": "^2.0.2",
-    "mermaid": "^11.11.0",
+    "mermaid": "^11.12.0",
     "monaco-editor": "^0.53.0",
     "monaco-editor-vue3": "^1.0.3",
+    "monaco-mermaid": "^1.1.0",
     "splitpanes": "^4.0.4",
     "super-vue3-tabs": "^1.2.5",
     "vue": "^3.5.18"

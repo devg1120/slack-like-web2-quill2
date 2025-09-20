@@ -5,7 +5,7 @@ import type { MermaidConfig } from 'mermaid'
 import tidyTreeLayouts from '@mermaid-js/layout-tidy-tree';
 import elkLayouts from '@mermaid-js/layout-elk';
 
-mermaid.registerLayoutLoaders(tidyTreeLayouts);
+//mermaid.registerLayoutLoaders(tidyTreeLayouts);
 mermaid.registerLayoutLoaders(elkLayouts);
 
 /**
@@ -16,9 +16,12 @@ mermaid.registerLayoutLoaders(elkLayouts);
  */
 const props = defineProps<{ content: string, config?: MermaidConfig }>()
 
+const emit = defineEmits(['err-mermaid']);
+
 const el = ref()
 const mermaidString = ref('')
-
+const consoleMsg = ref('')
+const console_enable = ref(false);
 /**
  * generate svg id
  */
@@ -37,10 +40,25 @@ function genSvgId() {
  */
 async function updateGraph(graphDefinition: string) {
   const id = genSvgId()
+  try {
+    const res = await mermaid.render(id, graphDefinition, el.value)
+    mermaidString.value = res.svg
+      console_enable.value = false;
+  } catch (e) {
+      let err_message = `${e.name}: ${e.message}`;
+      //console.log(err_message);
+      consoleMsg.value = err_message;
+      console_enable.value = true;
+      emit('err-mermaid', err_message);
+
+  }
+}
+
+async function updateGraph_(graphDefinition: string) {
+  const id = genSvgId()
   const res = await mermaid.render(id, graphDefinition, el.value)
   mermaidString.value = res.svg
 }
-
 // init mermaid
 
 watchEffect(() => {
@@ -69,4 +87,16 @@ watchEffect(() => {
 
 <template>
   <pre ref="el" class="mermaid" v-html="mermaidString" />
+  <p v-if="console_enable" class="console" >{{consoleMsg}}</p>
 </template>
+
+<style scoped>
+.console {
+  margin :10px;
+  margin-top :30px;
+  padding :10px;
+  /*background-color: red;*/
+  color: red;
+
+}
+</style>

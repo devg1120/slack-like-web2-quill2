@@ -1,0 +1,10 @@
+.DS_Store
+
+node_modules/
+coverage/
+cypress/
+
+e2e/**/vue-tree-navigation.js
+docs/build.js
+.vscode
+coverage
