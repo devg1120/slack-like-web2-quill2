@@ -35,7 +35,7 @@ const lorumipsum = GenLorum()
 const config_json = ref(`
 { 
   "theme" : "forest",
-  "startOnLoad" : true, 
+  "startOnLoad" : false, 
   "flowchart" : { "useMaxWidth" : false, "htmlLabels" : true }
 }
 
